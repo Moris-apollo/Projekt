@@ -1,0 +1,170 @@
+*{
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+    color:rgb(255, 255, 255);
+}
+
+body{
+    background-color: rgb(24, 24, 24);
+}
+
+#opis{
+    float: left;
+    width: 30%;
+    height: 800px;
+
+    margin-left: 5%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+
+    background-color: rgb(18,18,18);
+    border-radius: 20px;
+}
+#formularz{
+    float: right;
+    width: 30%;
+    height: 800px;
+
+    margin-right: 5%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    
+
+    background-color: rgb(18,18,18);
+    border-radius: 20px;   
+}
+
+footer{
+    clear: both;
+    display: block;
+
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 20px;
+    text-align: center;
+
+    background-color: rgb(0, 0, 0);
+    border-radius: 20px;  
+}
+
+
+button{
+    width: 40%;
+    background-color: rgb(18,18,18);
+    margin-right: auto;
+    margin-left: auto;
+    border: solid white 1px;
+}
+button:hover{
+    background-color: rgb(43,43,43);
+}
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    padding-left: 20px;
+    border-radius: 10px;
+  }
+  
+  li {
+    float: left;
+  }
+  li a{
+    display: block;
+    color:rgb(178,178,178);
+    text-align: center;
+    padding: 25px 20px;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  a:hover{
+    color:rgb(255, 255, 255);
+  }
+
+h2{
+    color: rgb(149,187,104);
+}
+h4{
+    color: rgb(149,187,104);
+}
+
+img{
+    border: dashed rgb(149,187,104);
+    border-radius: 20px;
+}
+
+input{
+    background-color: rgb(18,18,18);
+    border: solid 1px rgb(178,178,178);
+}
+
+input[type="text"]
+{
+    width: 90%;
+    height: 50px;
+}
+
+input[type="date"]
+{
+    width: 90%;
+    height: 50px;
+}
+
+audio::-webkit-media-controls-panel{
+    background-color: white;
+}
+
+
+
+
+
+/*resp*/
+
+@media screen and (max-width: 1290px) {
+    audio{
+        width: 260px;
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    img{
+        width:200px;
+    }
+    audio{
+        width: 210px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+#opis{
+    width: 50%;
+    float: none;
+    margin: auto auto;
+
+    margin-top: 10%;
+}
+#formularz{
+    width: 50%;
+    float: none;
+    margin: auto auto;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+img{
+    width:250px;
+}
+audio{
+    width: 270px;
+}
+}
+
