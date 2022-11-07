@@ -1,13 +1,13 @@
-*{
+* {
     font-family: 'Comic Sans MS', 'Comic Sans', cursive;
     color:rgb(255, 255, 255);
 }
 
-body{
+body {
     background-color: rgb(24, 24, 24);
 }
 
-#opis{
+#opis {
     float: left;
     width: 30%;
     height: 800px;
@@ -21,7 +21,8 @@ body{
     background-color: rgb(18,18,18);
     border-radius: 20px;
 }
-#formularz{
+
+#formularz {
     float: right;
     width: 30%;
     height: 800px;
@@ -37,7 +38,7 @@ body{
     border-radius: 20px;   
 }
 
-footer{
+footer {
     clear: both;
     display: block;
 
@@ -52,15 +53,15 @@ footer{
     border-radius: 20px;  
 }
 
-
-button{
+button {
     width: 40%;
     background-color: rgb(18,18,18);
     margin-right: auto;
     margin-left: auto;
     border: solid white 1px;
 }
-button:hover{
+
+button:hover {
     background-color: rgb(43,43,43);
 }
 
@@ -72,99 +73,100 @@ ul {
     color: white;
     padding-left: 20px;
     border-radius: 10px;
-  }
+}
   
-  li {
+li {
     float: left;
-  }
-  li a{
+}
+
+li a {
     display: block;
     color:rgb(178,178,178);
     text-align: center;
     padding: 25px 20px;
     text-decoration: none;
     margin-left: 10px;
-  }
-  a:hover{
+}
+
+a:hover {
     color:rgb(255, 255, 255);
-  }
-
-h2{
-    color: rgb(149,187,104);
 }
-h4{
+
+h2 {
     color: rgb(149,187,104);
 }
 
-img{
+h4 {
+    color: rgb(149,187,104);
+}
+
+img {
     border: dashed rgb(149,187,104);
     border-radius: 20px;
 }
 
-input{
+input {
     background-color: rgb(18,18,18);
     border: solid 1px rgb(178,178,178);
 }
 
-input[type="text"]
-{
+input[type="text"] {
     width: 90%;
     height: 50px;
 }
 
-input[type="date"]
-{
+input[type="date"] {
     width: 90%;
     height: 50px;
 }
 
-audio::-webkit-media-controls-panel{
+audio::-webkit-media-controls-panel {
     background-color: white;
 }
-
-
 
 
 
 /*resp*/
 
 @media screen and (max-width: 1290px) {
-    audio{
+    audio {
         width: 260px;
     }
 }
 
 
 @media screen and (max-width: 1100px) {
-    img{
+    img {
         width:200px;
     }
-    audio{
+
+    audio {
         width: 210px;
     }
 }
 
 @media screen and (max-width: 1000px) {
-#opis{
-    width: 50%;
-    float: none;
-    margin: auto auto;
+    #opis {
+        width: 50%;
+        float: none;
+        margin: auto auto;
+        margin-top: 10%;
+    }
 
-    margin-top: 10%;
-}
-#formularz{
-    width: 50%;
-    float: none;
-    margin: auto auto;
+    #formularz {
+        width: 50%;
+        float: none;
+        margin: auto auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-img{
-    width:250px;
-}
-audio{
-    width: 270px;
-}
+    img {
+        width:250px;
+    }
+
+    audio {
+        width: 270px;
+    }
 }
 
