@@ -3,6 +3,19 @@
         <meta charset="UTF-8">
         <title>Projekt</title>
         <link rel="stylesheet" href="style/style.css">
+
+        <script lang="JavaScript" type="text/javascript">
+
+            function Walidacja(form){
+                if(formularz.imie.value == "")
+                {
+                    form.imie.focus();
+                    alert("Imie nie moze byc puste!");
+                    return false;
+                }
+                return true;
+            }
+        </script>
     </head>
     <body>
 
@@ -32,23 +45,28 @@
         <div id="formularz">
         <section>
             <a style="font-size: 25px; font-weight: bold;">Formularz</a>
-            <form>
-                <p>Imię:</p><input type="text" name="imie" id="imie"><br><br>
-                <p>Nazwisko:</p><input type="text" name="nazwisko" id="nazisko"><br><br>
-                <p>Data urodzenia:</p><input type="date" name="data_ur" id="data_ur"><br><br>
+            <form enctype="text/plain" action="#" onSubmit='return Walidacja(this);'' method="post"></form>
+
+                <p>Imię:</p><input type="text" name="imie" id="imie" placeholder="Wpisz swoje imie" ><br><br>
+                <p>Nazwisko:</p><input type="text" name="nazwisko" id="nazwisko" placeholder="Wpisz swoje nazwisko" required><br><br>
+                <p>Data urodzenia:</p><input type="date" name="data_ur" id="data_ur" required><br><br>
+
                 <p>Płeć</p><input type="radio" name="plec" id="plec">
                 <label for="mezczyzna">Mężczyzna</label><br>
                 <input type="radio" name="plec" id="plec">
                 <label for="kobieta">Kobieta</label>
-                <p>Wybierz kolor:</p><input type="radio" name="kolor" id="kolor">
+
+                <p>Wybierz kolor:</p><input type="radio" name="kolor" id="kolor" required>
                 <label for="niebieski1">Niebieski</label><br>
                 <input type="radio" name="kolor" id="kolor">
                 <label for="niebieski2">Niebieski</label><br>
                 <input type="radio" name="kolor" id="kolor">
                 <label for="niebieski3">Inny niebieski</label>
                 </input><br><br>
+
                 <button type="reset">Wyczyść</button>
                 <button type="submit">Wyślij</button>
+
             </form>
         </section><br>
         <audio controls autoplay>
