@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Tahoma;
+    color: #D9D9D9;
+}
+
+header{
+    width: 100%;
+    min-height: 100px;
+    background: #1E2B4E;
+}
+
+#logo{
+    height: 75px;
+    width: 75px;
+    margin: 12.5px;
+    float: left;
+}
+
+#settings{
+    height: 25px;
+    width: 50px;
+    float: right;
+    margin: 37.5px;
+}
+
+#gallery{
+    width: 100%;
+    min-height: 500px; /*chwilowo*/
+    background: #18191A;
+    float: left;
+}
+
+footer{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background: #1E2B4E;
+    clear: both;
+}
+
+@media screen and (max-width: 420px){
+
+    #gallery{
+        height: 100% - (100px + 59px);
+    }
+}
