@@ -27,9 +27,13 @@ header{
 
 #gallery{
     width: 100%;
-    min-height: 500px; /*chwilowo*/
+    min-height: 700px; /*chwilowo*/
     background: #18191A;
     float: left;
+}
+
+.divImage {
+    display: none;
 }
 
 footer{
