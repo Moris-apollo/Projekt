@@ -40,6 +40,7 @@ const genPictureTest = () => {
 	divImage.width = "800";
 	divImage.height = "500";
     divImage.class = "divImage";
+    divImage.id = "divImage"+numberOfImages;
 	myImage = document.createElement('img');
 	myImage.width = "800";
 	myImage.height = "500";
@@ -55,51 +56,51 @@ const genPictureTest = () => {
 	LikeButton.appendChild(newText);
 }
 
-const likeImage = (id) => fetch("https://api.unsplash.com/photos/"+id+"/like", 
-	{
-	method: 'POST',
-	headers: {
-		Authorization: "Client-ID CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g"
-	}
-	})
-	.then((response) => {
-		if (!response.ok) {
-			throw new Error('Network response was not OK');
-		}
-		return response.json();
-	})
-	.then((myPhoto) => {
-		console.log(myPhoto.photo.likes);
-		console.log(myPhoto.photo.liked_by_user);
-	});
+// const likeImage = (id) => fetch("https://api.unsplash.com/photos/"+id+"/like", 
+// 	{
+// 	method: 'POST',
+// 	headers: {
+// 		Authorization: "Client-ID CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g"
+// 	}
+// 	})
+// 	.then((response) => {
+// 		if (!response.ok) {
+// 			throw new Error('Network response was not OK');
+// 		}
+// 		return response.json();
+// 	})
+// 	.then((myPhoto) => {
+// 		console.log(myPhoto.photo.likes);
+// 		console.log(myPhoto.photo.liked_by_user);
+// 	});
 
-const params = {
-	client_id: "CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g",
-	client_secret: "dllzg3N0Q8Q0hDIyMIrwYIiexQRj_6fcYq03Wn2l98g",
-	redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-	code: "e8Jzkk8LlbOn7ztmcDPNPlr2InxZDM2ojlybW697c_k",
-	grant_type: "authorization_code"
-};
+// const params = {
+// 	client_id: "CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g",
+// 	client_secret: "dllzg3N0Q8Q0hDIyMIrwYIiexQRj_6fcYq03Wn2l98g",
+// 	redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
+// 	code: "e8Jzkk8LlbOn7ztmcDPNPlr2InxZDM2ojlybW697c_k",
+// 	grant_type: "authorization_code"
+// };
 
-const authorize = () => window.location.replace("https://unsplash.com/oauth/authorize?client_id=CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82gredirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=read_user+write_user")
+// const authorize = () => window.location.replace("https://unsplash.com/oauth/authorize?client_id=CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82gredirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=read_user+write_user")
 
-const postToken = () => fetch("https://unsplash.com/oauth/token", 
-	{
-	method: 'POST',
-	body: JSON.stringify(params)
-	})
-	.then((response) => {
-		if (!response.ok) {
-			throw new Error('Network response was not OK');
-		}
-		return response.json();
-	})
-	.then((myJson) => {
-		console.log(myJson.access_token);
-	});
+// const postToken = () => fetch("https://unsplash.com/oauth/token", 
+// 	{
+// 	method: 'POST',
+// 	body: JSON.stringify(params)
+// 	})
+// 	.then((response) => {
+	// 	if (!response.ok) {
+	// 		throw new Error('Network response was not OK');
+	// 	}
+	// 	return response.json();
+	// })
+	// .then((myJson) => {
+	// 	console.log(myJson.access_token);
+	// });
 
 for (let i=0; i<10; i++) {
     genPictureTest();
 }
 
-const setCentralImage = (mid) => {myImage.id == "img"+mid}
+// const setCentralImage = (mid) => {myImage.id == "img"+mid}
