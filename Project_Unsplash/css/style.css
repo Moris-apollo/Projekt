@@ -40,6 +40,24 @@ footer{
     clear: both;
 }
 
+.divImg {
+    margin-top: -500px;
+    height: 500px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divImg:first-child {
+    margin-top: 100px;
+}
+
+.current {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media screen and (max-width: 420px){
 
     #gallery{

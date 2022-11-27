@@ -1,60 +1,40 @@
 let numberOfImages = 0;
+let currMiddle = 4;
+let middleImage = 4;
 
-// const genPicture = () => fetch('https://api.unsplash.com/photos/random?client_id=CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g')
-// 	.then((response) => {
-// 		if (!response.ok) {
-// 			throw new Error('Network response was not OK');
-// 		}
-// 		return response.json();
-// 	})
-// 	.then((myJson) => {
-// 		let myImage;
-// 		console.log(myJson);
-//         divImage = document.createElement('div');
-//         divImage.class = "divImage";
-// 		myImage = document.createElement('img');
-// 		myImage.width = "800";
-// 		myImage.height = "500";
-// 		myImage.src = myJson.urls.raw;
-// 		myImage.class = "myImg";
-//         myImage.id = "img"+numberOfImages;
-//         numberOfImages++;
-//         divImage.appendChild(myImage);
-// 		let LikeButton = document.createElement('button');
-// 		const newText = document.createTextNode("Like");
-// 		LikeButton.appendChild(newText);
-// 		LikeButton.class = "LikeButton" + myJson.id;
-// 		LikeButton.onclick = function() {likeImage(myJson.id)};
-// 		document.querySelector('body').appendChild(myImage);
-// 		document.body.insertBefore(LikeButton, myImage);
-// 	})
-// 	.catch((error) => {
-// 		console.error('There has been a problem with your fetch operation:', error);
-// });
+const onLoad = () => {
+	for (let i=0; i<10; i++) {
+		genPicture();
+	}
 
-const genPictureTest = () => {
-	let myImage;
-    let divImage;
-	console.log("Creating new image...");
-    divImage = document.createElement('div');
-	divImage.width = "800";
-	divImage.height = "500";
-    divImage.class = "divImage";
-    divImage.id = "divImage"+numberOfImages;
-	myImage = document.createElement('img');
-	myImage.width = "800";
-	myImage.height = "500";
-	myImage.src = "../img/img"+numberOfImages+".png";
-    console.log(myImage.src);
-	myImage.class = "myImg";
-    myImage.id = "img"+numberOfImages;
-    numberOfImages++;
-    divImage.appendChild(myImage);
-    console.log(divImage);
-	let LikeButton = document.createElement('button');
-	const newText = document.createTextNode("Like");
-	LikeButton.appendChild(newText);
+	setCentralImage();
 }
+
+const genPicture = () => fetch('https://cataas.com/cat?json=true')
+	.then((response) => {
+		if (!response.ok) {
+			throw new Error('Network response was not OK');
+		}
+		return response.json();
+	})
+	.then((myJson) => {
+		console.log(myJson);
+        let divImage = document.createElement('div');
+		divImage.classList.add("divImg");
+        divImage.id = "divImg"+numberOfImages;
+		let myImage = document.createElement('img');
+		myImage.width = "800";
+		myImage.height = "500";
+		myImage.src = 'https://cataas.com'+myJson.url;
+		myImage.classList.add("myImg");
+        myImage.id = "img"+numberOfImages;
+        numberOfImages++;
+        divImage.appendChild(myImage);
+		document.getElementById("gallery").appendChild(divImage);
+	})
+	.catch((error) => {
+		console.error('There has been a problem with your fetch operation:', error);
+});
 
 // const likeImage = (id) => fetch("https://api.unsplash.com/photos/"+id+"/like", 
 // 	{
@@ -90,17 +70,59 @@ const genPictureTest = () => {
 // 	body: JSON.stringify(params)
 // 	})
 // 	.then((response) => {
-	// 	if (!response.ok) {
-	// 		throw new Error('Network response was not OK');
-	// 	}
-	// 	return response.json();
-	// })
-	// .then((myJson) => {
-	// 	console.log(myJson.access_token);
-	// });
+// 		if (!response.ok) {
+// 			throw new Error('Network response was not OK');
+// 		}
+// 		return response.json();
+// 	})
+// 	.then((myJson) => {
+// 		console.log(myJson.access_token);
+// 	});
 
-for (let i=0; i<10; i++) {
-    genPictureTest();
+const moveCentralImage = (side) => middleImage+=side;
+
+const setCentralImage = () => {
+	const removeFromClassList1 = new Promise(() => {
+		document.getElementById("divImg"+currMiddle).classList.remove("current");
+	});
+	removeFromClassList1
+		.catch((e) => {console.error("Class list is empty")});
+	const addToClassList1 = new Promise(() => {
+		document.getElementById("divImg"+middleImage).classList.add("current");
+	});
+	addToClassList1
+		.catch((e) => console.error("Class list is empty"));
+	currMiddle = middleImage;
+	setPrevImage();
+	setNextImage();
 }
 
-// const setCentralImage = (mid) => {myImage.id == "img"+mid}
+const setPrevImage = () => {
+	const removeFromClassList2 = new Promise(() => {
+		document.getElementById("divImg"+parseInt(currMiddle-1)).classList.remove("prev");
+	});
+	removeFromClassList2
+		.catch((e) => {console.error("Class list is empty")});
+	const addToClassList2 = new Promise(() => {
+		document.getElementById("divImg"+parseInt(middleImage-1)).classList.add("prev");
+	});
+	addToClassList2
+		.catch((e) => console.error("Class list is empty"));
+}
+
+const setNextImage = () => {
+	const removeFromClassList3 = new Promise(() => {
+		document.getElementById("divImg"+parseInt(currMiddle+1)).classList.remove("next");
+	});
+	removeFromClassList3
+		.catch((e) => {console.error("Class list is empty")});
+	const addToClassList3 = new Promise(() => {
+		document.getElementById("divImg"+parseInt(middleImage+1)).classList.add("next");
+	});
+	addToClassList3
+		.catch((e) => console.error("Class list is empty"));
+}
+
+window.addEventListener("load", (event) => {
+	onLoad();
+});
