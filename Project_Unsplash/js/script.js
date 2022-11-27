@@ -6,8 +6,7 @@ const onLoad = () => {
 	for (let i=0; i<10; i++) {
 		genPicture();
 	}
-
-	setCentralImage();
+	setCentralImage(genPicture());
 }
 
 const genPicture = () => fetch('https://cataas.com/cat?json=true')
@@ -23,8 +22,6 @@ const genPicture = () => fetch('https://cataas.com/cat?json=true')
 		divImage.classList.add("divImg");
         divImage.id = "divImg"+numberOfImages;
 		let myImage = document.createElement('img');
-		myImage.width = "800";
-		myImage.height = "500";
 		myImage.src = 'https://cataas.com'+myJson.url;
 		myImage.classList.add("myImg");
         myImage.id = "img"+numberOfImages;
@@ -79,9 +76,13 @@ const genPicture = () => fetch('https://cataas.com/cat?json=true')
 // 		console.log(myJson.access_token);
 // 	});
 
-const moveCentralImage = (side) => middleImage+=side;
+const moveCentralImage = (side) => {
+	middleImage+=side;
+	setCentralImage(moveCentralImage(side));
+};
 
-const setCentralImage = () => {
+async function setCentralImage(fnc){
+	await fnc;
 	const removeFromClassList1 = new Promise(() => {
 		document.getElementById("divImg"+currMiddle).classList.remove("current");
 	});
