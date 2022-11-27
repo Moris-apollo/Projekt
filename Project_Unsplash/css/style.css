@@ -32,6 +32,14 @@ header{
     float: left;
 }
 
+/*dodane*/
+#PictureBrowser{
+    width: 100%;
+    min-height: 700px; 
+    background: #18191A;
+    float: left;
+}
+
 footer{
     width: 100%;
     height: auto;

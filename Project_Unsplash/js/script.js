@@ -127,3 +127,45 @@ const setNextImage = () => {
 window.addEventListener("load", (event) => {
 	onLoad();
 });
+
+
+
+
+//dodane
+// fetchowanie z unsplashem nie działa i coś jest nie tak z wyświetlaniem kolejnych img wyświtla 1 zamiast podanej liczby
+
+
+let numberOfPhotos = document.getElementById("numberOfPhotos");
+let subjectOfPhotos = document.getElementById("subjectOfPhotos");
+
+const customPicOnClick = (numberOfPhotos) => {
+	for (let i=0; i<numberOfPhotos; i++) {
+		customPictures();
+	}
+	setCentralImage(customPictures());
+}
+
+// const customPictures = (subjectOfPhotos) => fetch('https://api.unsplash.com/photos/'+subjectOfPhotos+'?client_id=')
+const customPictures = () => fetch('https://cataas.com/cat?json=true')
+	.then((response) => {
+		if (!response.ok) {
+			throw new Error('Network response was not OK');
+		}
+		return response.json();
+	})
+	.then((myJson) => {
+		console.log(myJson);
+        let divImage = document.createElement('div');
+		//divImage.classList.add("divImg");
+        //divImage.id = "divImg"+numberOfImages;
+		let myImage = document.createElement('img');
+		myImage.src = 'https://cataas.com'+myJson.url;
+		//myImage.classList.add("myImg");
+        //myImage.id = "img"+numberOfImages;
+        //numberOfImages++;
+        divImage.appendChild(myImage);
+		document.getElementById("PictureBrowser").appendChild(divImage);
+	})
+	.catch((error) => {
+		console.error('There has been a problem with your fetch operation:', error);
+});
