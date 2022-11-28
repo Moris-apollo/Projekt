@@ -5,28 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Main Page</title>
-    <script src="../js/script.js"></script>
+    <title>Unsplash API</title>
+
 </head>
 <body>
-    <header>
-        <a href="index.html"><img src="../img/logo.png" alt="logo" id="logo"></a>
-        <img src="../img/ustawienia.png" alt="ustawienia" id="settings">
-    </header>
-    <section id="gallery">
-        <div onclick="moveCentralImage(-1)" id="arrow_circle1" class="arrow_circle">
-            <img id="arrow_back" class="arrow" src="../img/arrow1.png">
+
+    <main>
+  
+      <header>
+          <div class="container">
+              <div id="header">
+                  <h2><img src="../img/logo.png" alt="logo strony"></h2>
+                  <div id="search_box">
+                      <input id="count" type="number" placeholder="Type number of photos" required>
+                      <input id="input" type="text" placeholder="Type subject of photos and press Enter" required>
+                  </div>
+              </div>
+          </div>
+      </header>
+      
+      <section>
+        <div class="container">
+          <div id="gallery">
+          </div>
         </div>
-        <div onclick="moveCentralImage(1)" id="arrow_circle2" class="arrow_circle">
-            <img id="arrow_next" class="arrow" src="../img/arrow2.png">
-        </div>
-    </section>
-        <!--Dodane-->
-        <section id="PictureBrowser">
-            Enter number of pictures that you wanna see:<br><input type="number" id="numberOfPhotos"><br>
-            Enter subject of pictures that you wanna see:<br><input type="text" id="subjectOfPhotos"><br>
-            <button onclick="customPicOnClick()">Submit Values</button><br>
-        </section>
-    <footer>&copy; Borys Skiba, Damian Soroka, Jacek Puchałko</footer>
-</body>
-</html>
+      </section>
+  
+    </main>
+    
+    <script src="../js/script.js"></script>
+  </body>
+  </html>
