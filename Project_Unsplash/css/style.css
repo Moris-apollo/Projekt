@@ -17,8 +17,35 @@ body{
   margin: auto;
 }
 
+h1 {
+  display: block;
+  width: 300px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 header{
     background: #1E2B4E;padding: 10px;
+}
+
+table {
+  margin: 50px auto 100px auto;
+  width: 90%;
+  border: 1px solid #DDDDDD;
+}
+
+th {
+  border: 3px solid #DDDDDD;
+  padding: 3px;
+  border-radius: 10%;
+}
+
+td {
+  text-align: center;
+  border: 1px solid #DDDDDD;
+  padding: 3px;
+  border-radius: 10%;
 }
 
 #header{
@@ -73,6 +100,20 @@ header{
   opacity: 1;
   padding: 10px;
   background-color: #1E2B4E;
+}
+
+#stats_button {
+  font-family: 'Comfortaa', cursive;
+  height: 50px;
+  padding: 5px;
+  border-radius: 15%;
+  border: none;
+  cursor: pointer;
+  background-color: #DDDDDD;
+}
+
+#stats_button:active {
+  background-color: #918f8f;
 }
 
 @media(max-width:1280px){
