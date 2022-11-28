@@ -116,6 +116,26 @@ td {
   background-color: #918f8f;
 }
 
+
+.likeButton{
+  border: none;
+  float:right;
+  font-size: 20px;
+  cursor: pointer;
+  text-align: right;
+}
+.likeButton:hover{
+  color:pink;
+}
+
+.like-yes{
+  color:red no-repeat;
+}
+.like-no{
+  color:white no-repeat;
+}
+
+
 @media(max-width:1280px){
  .container{width: 100%;}
 }

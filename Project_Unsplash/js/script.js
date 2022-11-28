@@ -37,9 +37,31 @@ loadImages = (data) => {
 
       text.innerText = data.results[i].user.name;
 
+      
+      let likeButton = document.createElement("div");
+
+      likeButton.className = "likeButton"
+      likeButton.innerHTML = "&#9829";
+
+      likeButton.onclick = function(){
+        const likes = document.querySelectorAll(".likeButton");
+        likes.forEach(like =>{
+          like.addEventListener("click",(event) =>{
+            event.target.classList.toggle("like-no");
+            event.target.classList.toggle("like-yes");
+            if(event.target.classList.contains("like-yes")){
+              console.log("Liked");
+            }else{
+              console.log("UnLiked");
+            }
+          })
+        })
+      }
+      
       image.className = "img";
       image.style.backgroundImage = "url("+data.results[i].urls.raw + "&w=1366&h=768" +")";
       image.appendChild(text);
+      text.appendChild(likeButton);
 
       document.getElementById("gallery").appendChild(image);
     }
