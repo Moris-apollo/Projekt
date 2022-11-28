@@ -127,6 +127,11 @@ footer{
     margin-left: 1400px;
 }
 
+button{
+    background:#18191A;
+    color:#D9D9D9;
+}
+
 @media screen and (max-width: 420px){
 
     #gallery{
