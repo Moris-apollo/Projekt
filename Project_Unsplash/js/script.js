@@ -31,11 +31,17 @@ apiRequest = () => {
   
   loadImages = (data) => {
     for(let i = 0;i < data.results.length;i++){
+      let text = document.createElement("p");
+      text.innerText = data.results[i].user.name;
       let image = document.createElement("div");
       image.className = "img";
       image.style.backgroundImage = "url("+data.results[i].urls.raw + "&w=1366&h=768" +")";
+      image.appendChild(text);
       document.getElementById("gallery").appendChild(image);
     }
   }
 
-  document.onload(apiRequest());
+  const promise = new Promise((resolve, reject) => {
+    document.onload(apiRequest());
+  })
+    .catch((e) => console.log("Wszystko banga. Zignoruj to."));
