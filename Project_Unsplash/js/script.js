@@ -18,7 +18,7 @@ document.getElementById("input").addEventListener("keydown", (event) => {
 
 apiRequest = () => {
     document.getElementById("gallery").textContent = "";
-  
+    let url = 'https://api.unsplash.com/search/photos?query='+wynik+'&per_page='+ilosc+'&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
     fetch(url)
     .then(response => {
         if (!response.ok) throw Error(response.statusText);
