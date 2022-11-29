@@ -34,27 +34,25 @@ loadImages = (data) => {
     for (let i = 0;i < data.results.length;i++) {
       let text = document.createElement("p");
       let image = document.createElement("div");
+      let likeButton = document.createElement("div");
 
       text.innerText = data.results[i].user.name;
 
-      
-      let likeButton = document.createElement("div");
-
-      likeButton.className = "likeButton"
+      likeButton.className = "likeButton";
       likeButton.innerHTML = "&#9829";
 
       likeButton.onclick = function(){
         const likes = document.querySelectorAll(".likeButton");
-        likes.forEach(like =>{
-          like.addEventListener("click",(event) =>{
-            event.target.classList.toggle("like-no");
-            event.target.classList.toggle("like-yes");
-            if(event.target.classList.contains("like-yes")){
-              console.log("Liked");
-            }else{
-              console.log("UnLiked");
+        likes.forEach(like => {
+          like.addEventListener("click", (event) => {
+            if (like.classList.contains("like-yes")) {
+              event.target.classList.remove("like-yes");
+              event.target.classList.add("like-no");
+            } else {
+              event.target.classList.remove("like-no");
+              event.target.classList.add("like-yes");
             }
-          })
+          }, {once : true});
         })
       }
       
