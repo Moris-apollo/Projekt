@@ -73,6 +73,7 @@ td {
 }
 
 #gallery{
+  padding-bottom: 20px;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
