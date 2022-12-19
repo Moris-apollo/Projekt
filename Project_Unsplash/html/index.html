@@ -5,16 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Main Page</title>
-    <script src="../js/script.js"></script>
+    <title>Unsplash API</title>
+
 </head>
 <body>
-    <header>
-        <a href="index.html"><img src="../img/logo.png" alt="logo" id="logo"></a>
-        <img src="../img/ustawienia.png" alt="ustawienia" id="settings">
-    </header>
-    <div id="gallery">
-    </div>
-    <footer>&copy; Borys Skiba, Damian Soroka, Jacek Puchałko</footer>
-</body>
-</html>
+
+    <main>
+  
+      <header>
+          <div class="container">
+              <div id="header">
+                  <h2><img src="../img/logo.png" alt="logo strony"></h2>
+                  <button id="stats_button" onclick="getStats()">Get statistics</button>
+                  <div id="search_box">
+                      <input id="count" type="number" placeholder="Type number of photos" required>
+                      <input id="keyword" type="text" placeholder="Type subject of photos and press Enter" required>
+                  </div>
+              </div>
+          </div>
+      </header>
+      
+      <section>
+        <div class="container">
+          <div id="gallery">
+          </div>
+        </div>
+      </section>
+  
+    </main>
+    <div id="for_table"></div>
+    
+    <script src="../js/script.js"></script>
+  </body>
+  </html>

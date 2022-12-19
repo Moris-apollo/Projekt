@@ -1,106 +1,139 @@
-let numberOfImages = 0;
+var wynik = "random";
+var ilosc = 10;
 
-// const genPicture = () => fetch('https://api.unsplash.com/photos/random?client_id=CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g')
-// 	.then((response) => {
-// 		if (!response.ok) {
-// 			throw new Error('Network response was not OK');
-// 		}
-// 		return response.json();
-// 	})
-// 	.then((myJson) => {
-// 		let myImage;
-// 		console.log(myJson);
-//         divImage = document.createElement('div');
-//         divImage.class = "divImage";
-// 		myImage = document.createElement('img');
-// 		myImage.width = "800";
-// 		myImage.height = "500";
-// 		myImage.src = myJson.urls.raw;
-// 		myImage.class = "myImg";
-//         myImage.id = "img"+numberOfImages;
-//         numberOfImages++;
-//         divImage.appendChild(myImage);
-// 		let LikeButton = document.createElement('button');
-// 		const newText = document.createTextNode("Like");
-// 		LikeButton.appendChild(newText);
-// 		LikeButton.class = "LikeButton" + myJson.id;
-// 		LikeButton.onclick = function() {likeImage(myJson.id)};
-// 		document.querySelector('body').appendChild(myImage);
-// 		document.body.insertBefore(LikeButton, myImage);
-// 	})
-// 	.catch((error) => {
-// 		console.error('There has been a problem with your fetch operation:', error);
-// });
+document.getElementById("keyword").addEventListener("keydown", (event) => {
+    if (event.key == "Enter"){
+		wynik = document.getElementById('keyword').value;
+		ilosc = document.getElementById('count').value;
+		if (wynik == ""){
+			wynik = "random";
+		}
+		if (document.getElementById('count').value == null){
+			ilosc = 10;
+		}
+		apiRequest();
+	}
+});
 
-const genPictureTest = () => {
-	let myImage;
-    let divImage;
-	console.log("Creating new image...");
-    divImage = document.createElement('div');
-	divImage.width = "800";
-	divImage.height = "500";
-    divImage.class = "divImage";
-    divImage.id = "divImage"+numberOfImages;
-	myImage = document.createElement('img');
-	myImage.width = "800";
-	myImage.height = "500";
-	myImage.src = "../img/img"+numberOfImages+".png";
-    console.log(myImage.src);
-	myImage.class = "myImg";
-    myImage.id = "img"+numberOfImages;
-    numberOfImages++;
-    divImage.appendChild(myImage);
-    console.log(divImage);
-	let LikeButton = document.createElement('button');
-	const newText = document.createTextNode("Like");
-	LikeButton.appendChild(newText);
+apiRequest = () => {
+    document.getElementById("gallery").textContent = "";
+    let url = 'https://api.unsplash.com/search/photos?query='+wynik+'&per_page='+ilosc+'&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
+    fetch(url)
+    .then(response => {
+        if (!response.ok) throw Error(response.statusText);
+            return response.json();
+    })
+    .then(data => {
+        loadImages(data);
+    })
+    .catch(error => console.log(error));   
+}
+  
+loadImages = (data) => {
+    for (let i = 0;i < data.results.length;i++) {
+      let text = document.createElement("p");
+      let image = document.createElement("div");
+      let likeButton = document.createElement("div");
+
+      text.innerText = data.results[i].user.name;
+
+      likeButton.className = "likeButton";
+      likeButton.innerHTML = "&#9829";
+
+      likeButton.onclick = function(){
+        const likes = document.querySelectorAll(".likeButton");
+        likes.forEach(like => {
+          like.addEventListener("click", (event) => {
+            if (like.classList.contains("like-yes")) {
+              event.target.classList.remove("like-yes");
+              event.target.classList.add("like-no");
+            } else {
+              event.target.classList.remove("like-no");
+              event.target.classList.add("like-yes");
+            }
+          }, {once : true});
+        })
+      }
+      
+      image.className = "img";
+      image.style.backgroundImage = "url("+data.results[i].urls.raw + "&w=1366&h=768" +")";
+      image.appendChild(text);
+      text.appendChild(likeButton);
+
+      document.getElementById("gallery").appendChild(image);
+    }
 }
 
-// const likeImage = (id) => fetch("https://api.unsplash.com/photos/"+id+"/like", 
-// 	{
-// 	method: 'POST',
-// 	headers: {
-// 		Authorization: "Client-ID CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g"
-// 	}
-// 	})
-// 	.then((response) => {
-// 		if (!response.ok) {
-// 			throw new Error('Network response was not OK');
-// 		}
-// 		return response.json();
-// 	})
-// 	.then((myPhoto) => {
-// 		console.log(myPhoto.photo.likes);
-// 		console.log(myPhoto.photo.liked_by_user);
-// 	});
+getStats = () => {
+  document.getElementById("for_table").textContent = "";
+  let url = 'https://api.unsplash.com/search/photos?query='+wynik+'&per_page='+ilosc+'&client_id=SouHY7Uul-OxoMl3LL3c0NkxUtjIrKwf3tsGk1JaiVo';
 
-// const params = {
-// 	client_id: "CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82g",
-// 	client_secret: "dllzg3N0Q8Q0hDIyMIrwYIiexQRj_6fcYq03Wn2l98g",
-// 	redirect_uri: "urn:ietf:wg:oauth:2.0:oob",
-// 	code: "e8Jzkk8LlbOn7ztmcDPNPlr2InxZDM2ojlybW697c_k",
-// 	grant_type: "authorization_code"
-// };
-
-// const authorize = () => window.location.replace("https://unsplash.com/oauth/authorize?client_id=CDjc8q0nVTQjBw3Zs9lMqQCuzGdhqYwOWhFnq1XU82gredirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=read_user+write_user")
-
-// const postToken = () => fetch("https://unsplash.com/oauth/token", 
-// 	{
-// 	method: 'POST',
-// 	body: JSON.stringify(params)
-// 	})
-// 	.then((response) => {
-	// 	if (!response.ok) {
-	// 		throw new Error('Network response was not OK');
-	// 	}
-	// 	return response.json();
-	// })
-	// .then((myJson) => {
-	// 	console.log(myJson.access_token);
-	// });
-
-for (let i=0; i<10; i++) {
-    genPictureTest();
+  fetch(url)
+    .then(response => {
+        if (!response.ok) throw Error(response.statusText);
+            return response.json();
+    })
+    .then(data => {
+        createStatsTable(data);
+    })
 }
 
-// const setCentralImage = (mid) => {myImage.id == "img"+mid}
+createStatsTable = (data) => {
+    let authorsStatsText = document.createElement("h1");
+    let statsTable = document.createElement("table");
+    let headers = document.createElement("tr");
+
+    authorsStatsText.innerText = "Authors Statistics";
+    document.getElementById("for_table").appendChild(authorsStatsText);
+
+    getHeader(headers, "Photo number");
+    getHeader(headers, "Username");
+    getHeader(headers, "First name");
+    getHeader(headers, "Last name");
+    getHeader(headers, "ID");
+    getHeader(headers, "Collections");
+    getHeader(headers, "Likes");
+    getHeader(headers, "Photos");
+    getHeader(headers, "Bio");
+    getHeader(headers, "Location");
+
+    statsTable.appendChild(headers);
+
+    for(let i = 0;i < data.results.length;i++){
+      let rowT = document.createElement("tr");
+
+      getCell(rowT, parseInt(i+1));
+      getCell(rowT, data.results[i].user.username);
+      getCell(rowT, data.results[i].user.first_name);
+      getCell(rowT, data.results[i].user.last_name);
+      getCell(rowT, data.results[i].user.id);
+      getCell(rowT, data.results[i].user.total_collections);
+      getCell(rowT, data.results[i].user.total_likes);
+      getCell(rowT, data.results[i].user.total_photos);
+      getCell(rowT, data.results[i].user.bio);
+      getCell(rowT, data.results[i].user.location);
+
+      statsTable.appendChild(rowT);
+    }
+
+    document.getElementById("for_table").appendChild(statsTable);
+}
+
+getHeader = (headers, stat) => {
+  let headerT = document.createElement("th");
+
+  headerT.innerText = stat;
+  headers.appendChild(headerT);
+}
+
+getCell = (rowT, stat) => {
+  let cellT = document.createElement("td");
+  
+  cellT.innerText = stat;
+  rowT.appendChild(cellT);
+}
+
+const promise = new Promise((resolve, reject) => {
+    document.onload(apiRequest());
+})
+    .catch((e) => console.log("Wszystko banga. Zignoruj to."));
